@@ -1,20 +1,42 @@
 import { ClipboardText, Trash } from "phosphor-react";
 import styles from "./TaskBoard.module.css";
 
-const TaskBoard = () => {
-  let counter = 1;
+interface Task {
+  id: number;
+  description: string;
+  isComplete: boolean;
+}
+
+interface TaskBoardProps {
+  tasks: Task[];
+  onToggleTask: (id: number) => void;
+}
+
+const TaskBoard = ({ tasks, onToggleTask }: TaskBoardProps) => {
+  const totalTasks = tasks.length;
+  const completedTasks = tasks.reduce((acc, state) => {
+    if (state.isComplete) {
+      acc++;
+    }
+    return acc;
+  }, 0);
+
+  const sortedTasks = [...tasks].sort((a, b) => {
+    return Number(a.isComplete) - Number(b.isComplete) || a.id - b.id;
+  });
+
   return (
     <div className={styles.container}>
       <header className={styles.header}>
         <p>
-          Tarefas criadas <span className={styles.counter}>{counter}</span>
+          Tarefas criadas <span className={styles.counter}>{totalTasks}</span>
         </p>
         <p>
-          Concluídas <span className={styles.counter}>{counter}</span>
+          Concluídas <span className={styles.counter}>{completedTasks}</span>
         </p>
       </header>
 
-      {counter === 0 ? (
+      {totalTasks === 0 ? (
         <div className={styles.emptyBoard}>
           <ClipboardText size={56} />
           <div className={styles.boardText}>
@@ -24,16 +46,17 @@ const TaskBoard = () => {
         </div>
       ) : (
         <div className={styles.taskList}>
-          <div className={styles.task}>
-            <input type="checkbox" />
-            <p className={styles.strikethroughText}>
-              Integer urna interdum massa libero auctor neque turpis turpis
-              semper. Duis vel sed fames integer.
-            </p>
-            <button>
-              <Trash size={20} />
-            </button>
-          </div>
+          {sortedTasks.map((task) => (
+            <div className={styles.task} key={task.id}>
+              <input type="checkbox" onChange={() => onToggleTask(task.id)} />
+              <p className={task.isComplete ? styles.strikethroughText : ""}>
+                {task.description}
+              </p>
+              <button>
+                <Trash size={20} />
+              </button>
+            </div>
+          ))}
         </div>
       )}
     </div>

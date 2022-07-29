@@ -4,23 +4,36 @@ import TaskBoard from "./TaskBoard";
 
 type Task = {
   id: number;
-  task: string;
+  description: string;
+  isComplete: boolean;
 };
 
 const TasksContainer = () => {
   const [tasks, setTasks] = useState<Task[]>([]);
   const [newTask, setNewTask] = useState("");
 
-  const addTask = (e: FormEvent) => {
+  const onAddTask = (e: FormEvent) => {
     e.preventDefault();
     setTasks([
       ...tasks,
       {
         id: tasks.length + 1,
-        task: newTask,
+        description: newTask,
+        isComplete: false,
       },
     ]);
     setNewTask("");
+  };
+
+  const onToggleTask = (id: number) => {
+    const taskStatus = tasks.map((task) => {
+      if (task.id === id) {
+        return { ...task, isComplete: !task.isComplete };
+      }
+      return task;
+    });
+
+    setTasks(taskStatus);
   };
 
   return (
@@ -28,9 +41,9 @@ const TasksContainer = () => {
       <NewTaskForm
         setNewTask={setNewTask}
         newTask={newTask}
-        addTask={addTask}
+        onAddTask={onAddTask}
       />
-      <TaskBoard />
+      <TaskBoard tasks={tasks} onToggleTask={onToggleTask} />
     </>
   );
 };
