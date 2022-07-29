@@ -3,14 +3,14 @@ import { FormEvent } from "react";
 import styles from "./NewTaskForm.module.css";
 
 interface NewTaskFormProps {
-  addTask: (e: FormEvent) => void;
+  onAddTask: (e: FormEvent) => void;
   newTask: string;
   setNewTask: (e: string) => void;
 }
 
-const NewTaskForm = ({ addTask, newTask, setNewTask }: NewTaskFormProps) => {
+const NewTaskForm = ({ onAddTask, newTask, setNewTask }: NewTaskFormProps) => {
   return (
-    <form className={styles.newTaskForm} onSubmit={(e) => addTask(e)}>
+    <form className={styles.newTaskForm} onSubmit={(e) => onAddTask(e)}>
       <input
         placeholder="Adicione uma nova tarefa"
         onChange={(e) => setNewTask(e.target.value)}
