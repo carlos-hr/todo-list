@@ -1,7 +1,11 @@
+import { Header, TasksContainer } from "./components";
+import "./global.css";
+
 function App() {
   return (
     <div className="App">
-      <h1>começou</h1>
+      <Header />
+      <TasksContainer />
     </div>
   );
 }
