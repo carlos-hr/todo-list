@@ -14,6 +14,12 @@ interface TaskBoardProps {
 
 const TaskBoard = ({ tasks, onToggleTask }: TaskBoardProps) => {
   const totalTasks = tasks.length;
+  const completedTasks = tasks.reduce((acc, state) => {
+    if (state.isComplete) {
+      acc++;
+    }
+    return acc;
+  }, 0);
 
   return (
     <div className={styles.container}>
@@ -22,7 +28,7 @@ const TaskBoard = ({ tasks, onToggleTask }: TaskBoardProps) => {
           Tarefas criadas <span className={styles.counter}>{totalTasks}</span>
         </p>
         <p>
-          Concluídas <span className={styles.counter}>{totalTasks}</span>
+          Concluídas <span className={styles.counter}>{completedTasks}</span>
         </p>
       </header>
 

@@ -36,7 +36,6 @@ const TasksContainer = () => {
     setTasks(taskStatus);
   };
 
-  console.log(tasks);
   return (
     <>
       <NewTaskForm
