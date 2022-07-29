@@ -33,7 +33,7 @@
   justify-content: center;
   align-items: center;
   padding: 0.125rem 0.5rem;
-  width: 1.5625rem;
+  min-width: 1.5625rem;
   height: 1.1875rem;
   border-radius: 999px;
 }
@@ -68,7 +68,6 @@
   display: flex;
   align-items: flex-start;
   padding: 1rem;
-
   min-height: 4.5rem;
   color: var(--gray-100);
   background: var(--gray-500);
@@ -84,7 +83,7 @@
 }
 
 .task p {
-  max-width: 39.5rem;
+  width: 39.5rem;
   margin-left: 0.75rem;
 }
 
