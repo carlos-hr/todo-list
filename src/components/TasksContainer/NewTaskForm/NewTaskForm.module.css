@@ -24,6 +24,7 @@
 }
 
 .newTaskForm button {
+  border: none;
   height: 3.375rem;
   width: 5.625rem;
   background: var(--blue-600);
