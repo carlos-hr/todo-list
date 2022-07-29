@@ -21,6 +21,10 @@ const TaskBoard = ({ tasks, onToggleTask }: TaskBoardProps) => {
     return acc;
   }, 0);
 
+  const sortedTasks = [...tasks].sort((a, b) => {
+    return Number(a.isComplete) - Number(b.isComplete) || a.id - b.id;
+  });
+
   return (
     <div className={styles.container}>
       <header className={styles.header}>
@@ -42,7 +46,7 @@ const TaskBoard = ({ tasks, onToggleTask }: TaskBoardProps) => {
         </div>
       ) : (
         <div className={styles.taskList}>
-          {tasks.map((task) => (
+          {sortedTasks.map((task) => (
             <div className={styles.task} key={task.id}>
               <input type="checkbox" onChange={() => onToggleTask(task.id)} />
               <p className={task.isComplete ? styles.strikethroughText : ""}>
