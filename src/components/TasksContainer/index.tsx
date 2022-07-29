@@ -36,6 +36,11 @@ const TasksContainer = () => {
     setTasks(taskStatus);
   };
 
+  const onDeleteTask = (id: number) => {
+    const filteredTasks = tasks.filter((task) => task.id !== id);
+    setTasks(filteredTasks);
+  };
+
   return (
     <>
       <NewTaskForm
@@ -43,7 +48,11 @@ const TasksContainer = () => {
         newTask={newTask}
         onAddTask={onAddTask}
       />
-      <TaskBoard tasks={tasks} onToggleTask={onToggleTask} />
+      <TaskBoard
+        tasks={tasks}
+        onToggleTask={onToggleTask}
+        onDeleteTask={onDeleteTask}
+      />
     </>
   );
 };

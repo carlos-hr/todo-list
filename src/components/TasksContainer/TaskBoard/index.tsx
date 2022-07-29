@@ -10,9 +10,10 @@ interface Task {
 interface TaskBoardProps {
   tasks: Task[];
   onToggleTask: (id: number) => void;
+  onDeleteTask: (id: number) => void;
 }
 
-const TaskBoard = ({ tasks, onToggleTask }: TaskBoardProps) => {
+const TaskBoard = ({ tasks, onToggleTask, onDeleteTask }: TaskBoardProps) => {
   const totalTasks = tasks.length;
   const completedTasks = tasks.reduce((acc, state) => {
     if (state.isComplete) {
@@ -52,7 +53,7 @@ const TaskBoard = ({ tasks, onToggleTask }: TaskBoardProps) => {
               <p className={task.isComplete ? styles.strikethroughText : ""}>
                 {task.description}
               </p>
-              <button>
+              <button onClick={() => onDeleteTask(task.id)}>
                 <Trash size={20} />
               </button>
             </div>
