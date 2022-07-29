@@ -1,0 +1,147 @@
+.container {
+  max-width: 46rem;
+  margin: 1.78rem auto;
+  padding: 0 1rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
+.header p {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.header p:first-child {
+  color: var(--blue-300);
+}
+
+.header p:nth-child(2) {
+  color: var(--blue-600);
+}
+
+.counter {
+  color: var(--white);
+  background: var(--gray-400);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0.125rem 0.5rem;
+  width: 1.5625rem;
+  height: 1.1875rem;
+  border-radius: 999px;
+}
+
+.emptyBoard {
+  margin-top: 1.5rem;
+  border-top: 1px solid var(--gray-400);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 15.25rem;
+  color: var(--gray-300);
+  gap: 1rem;
+}
+
+.boardText {
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.boardText p:first-child {
+  font-weight: 700;
+}
+
+.taskList {
+  margin-top: 1.5rem;
+}
+
+.task {
+  display: flex;
+  align-items: flex-start;
+  padding: 1rem;
+
+  min-height: 4.5rem;
+  color: var(--gray-100);
+  background: var(--gray-500);
+  border: 1px solid var(--gray-400);
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+.task + .task {
+  margin-top: 0.75rem;
+}
+
+.task p {
+  max-width: 39.5rem;
+  margin-left: 0.75rem;
+}
+
+.strikethroughText {
+  text-decoration: line-through;
+  color: var(--gray-300);
+}
+
+.task input[type="checkbox"] {
+  -webkit-appearance: none;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  border: 1px solid var(--blue-300);
+  cursor: pointer;
+  margin-top: 0.2rem;
+  transition: all 0.2s;
+}
+
+.task input[type="checkbox"]:hover {
+  border: 1px solid var(--blue-600);
+}
+
+.task input[type="checkbox"]::before {
+  content: "";
+  display: block;
+  width: inherit;
+  height: inherit;
+  background-size: contain;
+}
+
+.task input[type="checkbox"]:checked {
+  background-color: var(--purple-600);
+  border: 1px solid var(--purple-600);
+}
+
+.task input[type="checkbox"]:checked:hover {
+  background-color: var(--purple-300);
+  border: 1px solid var(--purple-300);
+}
+
+.task input[type="checkbox"]:checked::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E %3Cpath d='M15.88 8.29L10 14.17l-1.88-1.88a.996.996 0 1 0-1.41 1.41l2.59 2.59c.39.39 1.02.39 1.41 0L17.3 9.7a.996.996 0 0 0 0-1.41c-.39-.39-1.03-.39-1.42 0z' fill='%23fff'/%3E %3C/svg%3E");
+}
+
+.task button {
+  cursor: pointer;
+  margin-right: 1rem;
+  background: transparent;
+  border: 0;
+  color: var(--gray-300);
+  border-radius: 4px;
+  width: 1.875rem;
+  height: 1.875rem;
+}
+
+.task button:hover {
+  color: var(--red);
+  background: var(--gray-400);
+}
