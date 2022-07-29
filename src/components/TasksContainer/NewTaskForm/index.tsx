@@ -15,6 +15,8 @@ const NewTaskForm = ({ onAddTask, newTask, setNewTask }: NewTaskFormProps) => {
         placeholder="Adicione uma nova tarefa"
         onChange={(e) => setNewTask(e.target.value)}
         value={newTask}
+        required
+        minLength={10}
       />
       <button type="submit">
         Criar
